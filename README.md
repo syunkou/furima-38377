@@ -52,7 +52,6 @@
 
 ### Association
 
-- belongs_to :user
 - belongs_to :purchase_record
 
 ## purchase_records テーブル
