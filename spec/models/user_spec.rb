@@ -4,7 +4,7 @@ require 'rails_helper'
     @user = FactoryBot.build(:user)
   end
 
-  describe 'ユーザー新規登録' do
+  describe '新規登録/ユーザー情報' do
     it 'nicknameが空では登録できない' do
       @user.nickname = ''
       @user.valid?
@@ -53,28 +53,60 @@ require 'rails_helper'
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
-
   end
 
 
 
+  describe '新規登録/本人情報確認' do
+    it "family_nameがない場合は登録できないこと" do
+      @user.family_name = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name can't be blank")
+    end
+    it "first_nameがない場合は登録できないこと" do
+      @user.first_name = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name can't be blank")
+    end
+    it "family_nameは全角（漢字・ひらがな・カタカナ）でなければ登録できない" do
+      @user.family_name = 'aaaa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Family name is invalid')
+    end
+    it "first_nameは全角（漢字・ひらがな・カタカナ）でなければ登録できない" do
+      @user.first_name = 'aaaa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('First name is invalid')
+    end
+    
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    it "family_name_kanaがない場合は登録できないこと" do
+      @user.family_name_kana = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name kana can't be blank")
+    end
+    it "first_name_kanaがない場合は登録できないこと" do
+      @user.first_name_kana = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana can't be blank")
+    end
+    it "family_name_kanaが全角（カタカナ）でなければ登録できないこと" do
+      @user.family_name_kana = 'ああああ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Family name kana is invalid')
+    end
+    it "first_name_kanaが全角（カタカナ）でなければ登録できないこと" do
+      @user.first_name_kana = 'ああああ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('First name kana is invalid')
+    end
+    it "birthがない場合は登録できないこと" do
+      @user.birth = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Birth can't be blank")
+    end
+  end
 end
