@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show,:new]
+  before_action :authenticate_user!,except: [:index, :show,]
+  before_action :move_to_index, except: [:index, :show,]
+ 
 
   def index
   end
@@ -9,7 +11,12 @@ class ItemsController < ApplicationController
   end
 
   def create
-    Item.create(item_params)
+    @item = Item.create(item_params)
+     if @item.save
+       redirect_to root_path
+     else
+       render new_item_path
+     end
   end
 
 
