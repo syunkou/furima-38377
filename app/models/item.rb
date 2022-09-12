@@ -11,8 +11,7 @@ class Item < ApplicationRecord
 
 
   validates :price,
-              numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
-              format: { with: /\A[0-9]+\z/ }
+              numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
   with_options presence: true do
     validates :name
@@ -22,7 +21,6 @@ class Item < ApplicationRecord
     validates :delivery_charge_id
     validates :sender_id
     validates :shippedd_date_id
-    validates :user_id
     validates :image
   end
 
