@@ -5,8 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items, dependent: :destroy
-  has_many :purchase_records
-  
+  #has_many :purchase_records
   
   validates :nickname, presence: true
   validates :first_name, presence: true, format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ } 
@@ -14,6 +13,4 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true, format: {with: /\A[ァ-ヶー－]+\z/ } 
   validates :family_name_kana, presence: true, format: {with: /\A[ァ-ヶー－]+\z/ }
   validates :birth, presence: true
-
-  
 end
