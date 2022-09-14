@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-  #has_one :purchase_record
   has_one_attached :image
   belongs_to :user
   has_one :order
@@ -9,7 +8,6 @@ class Item < ApplicationRecord
   belongs_to :delivery_charge
   belongs_to :sender
   belongs_to :shippedd_date
-
 
   validates :price,
               numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }

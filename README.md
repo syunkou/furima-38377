@@ -44,7 +44,7 @@
 | zipcode         | string     | null: false                    |
 | status_id       | integer    | null: false                    |
 | city            | string     | null: false                    |
-| addres1         | string     | null: false                    |
+| address1        | string     | null: false                    |
 | address2        | string     |                                |
 | phone_number    | string     | null: false                    |
 | order           | references | null: false, foreign_key: true |
@@ -63,5 +63,5 @@
 ### Association
 
 - belongs_to :user
-- has_one :address
 - belongs_to :item
+- has_one :address
