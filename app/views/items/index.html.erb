@@ -17,6 +17,7 @@
     </div>
   </div>
   <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
+
   <%# FURIMAが選ばれる3つの理由部分 %>
   <div class='select-reason-contents'>
     <h2 class='title'>
@@ -59,6 +60,7 @@
     </ul>
   </div>
   <%# /FURIMAが選ばれる3つの理由部分 %>
+
   <%# 画面中央の「会員数日本一位」帯部分 %>
   <div class='ad-contents'>
     <h2 class='ad-title'>
@@ -79,6 +81,7 @@
     </div>
   </div>
   <%# /画面中央の「会員数日本一位」帯部分 %>
+
   <%# FURIMAの特徴 %>
   <div class='feature-contents'>
     <h2 class='title'>
@@ -128,15 +131,12 @@
       <li class='list'>
         <%= link_to item_path(item) do %>
         <div class='item-img-content'>
-          <%= image_tag item.image.variant(resize: '500x500'), class: "item-img" if item.image.attached? %>
-
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <%# if item.purchase_record.present? %>
+        <%= image_tag item.image.variant(resize: '500x500'), class: "item-img" if item.image.attached? %>
+          <% if item.order != nil %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
-          <%# //商品が売れていればsold outを表示しましょう %>
-
+          <% end %>
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
