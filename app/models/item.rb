@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :status
   belongs_to :delivery_charge
-  belongs_to :sender
+  belongs_to :prefecture
   belongs_to :shippedd_date
 
   validates :price,
@@ -18,7 +18,7 @@ class Item < ApplicationRecord
     validates :category_id
     validates :status_id
     validates :delivery_charge_id
-    validates :sender_id
+    validates :prefecture_id
     validates :shippedd_date_id
     validates :image
   end
@@ -27,7 +27,7 @@ class Item < ApplicationRecord
     validates :category_id
     validates :status_id
     validates :delivery_charge_id
-    validates :sender_id
+    validates :prefecture_id
     validates :shippedd_date_id
   end
   

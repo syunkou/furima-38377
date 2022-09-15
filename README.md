@@ -42,7 +42,7 @@
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | zipcode         | string     | null: false                    |
-| status_id       | integer    | null: false                    |
+| prefecture_id   | integer    | null: false                    |
 | city            | string     | null: false                    |
 | address1        | string     | null: false                    |
 | address2        | string     |                                |
