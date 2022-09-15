@@ -1,6 +1,6 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :zipcode, :prefecture_id, :city, :address1, :address2, :phone_number
+  attr_accessor :user_id, :item_id, :zipcode, :prefecture_id, :city, :address1, :address2, :phone_number, :token
 
   with_options presence: true do
     # orderのバリデーション
@@ -12,6 +12,8 @@ class OrderAddress
     validates :city
     validates :address1
     validates :phone_number, format: { with: /\A[0-9]+{11}\z/}
+    # トークンのバリデーション
+    validates :token
   end
 
   def save
