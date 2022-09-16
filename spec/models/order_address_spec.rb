@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe OrderAddress, type: :model do
   before do
     @order_address = FactoryBot.build(:order_address)
+    @order_address.user_id = 1
+    @order_address.item_id = 1
   end
 
   describe '配送先情報の保存' do
@@ -97,6 +99,11 @@ RSpec.describe OrderAddress, type: :model do
       end
       it '電話番号が12桁以上あると保存できないこと' do
         @order_address.phone_number = '12345678910123111'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include()
+      end
+      it '電話番号が9桁以下では保存できないこと' do
+        @order_address.phone_number = '12345678'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include()
       end
