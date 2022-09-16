@@ -11,7 +11,7 @@ class OrderAddress
     validates :prefecture_id, numericality: { other_than: 0}
     validates :city
     validates :address1
-    validates :phone_number, format: { with: /\A[0-9]+{11}\z/}
+    validates :phone_number, format: { with: /\A\d{10,11}\z/}
     # トークンのバリデーション
     validates :token
   end
