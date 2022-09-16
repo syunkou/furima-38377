@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items,dependent: :destroy
-- has_many :purchase_records
+- has_many :orders
 
 ## items テーブル
 
@@ -35,25 +35,25 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchase_record
+- has_one :order
 
 ## addresses テーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | zipcode         | string     | null: false                    |
-| status_id       | integer    | null: false                    |
+| prefecture_id   | integer    | null: false                    |
 | city            | string     | null: false                    |
-| addres1         | string     | null: false                    |
+| address1        | string     | null: false                    |
 | address2        | string     |                                |
 | phone_number    | string     | null: false                    |
-| purchase_record | references | null: false, foreign_key: true |
+| order           | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :purchase_record
+- belongs_to :order
 
-## purchase_records テーブル
+## orders テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -63,5 +63,5 @@
 ### Association
 
 - belongs_to :user
-- has_one :address
 - belongs_to :item
+- has_one :address

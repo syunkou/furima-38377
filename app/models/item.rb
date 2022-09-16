@@ -1,14 +1,13 @@
 class Item < ApplicationRecord
-  #has_one :purchase_record
   has_one_attached :image
   belongs_to :user
+  has_one :order
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :status
   belongs_to :delivery_charge
-  belongs_to :sender
+  belongs_to :prefecture
   belongs_to :shippedd_date
-
 
   validates :price,
               numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
@@ -19,7 +18,7 @@ class Item < ApplicationRecord
     validates :category_id
     validates :status_id
     validates :delivery_charge_id
-    validates :sender_id
+    validates :prefecture_id
     validates :shippedd_date_id
     validates :image
   end
@@ -28,7 +27,7 @@ class Item < ApplicationRecord
     validates :category_id
     validates :status_id
     validates :delivery_charge_id
-    validates :sender_id
+    validates :prefecture_id
     validates :shippedd_date_id
   end
   
